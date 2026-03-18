@@ -123,7 +123,6 @@ Full documentation source is available under [`docs/source/`](docs/source/), cov
 - [Quickstart](docs/source/getting_started/quickstart.rst)
 - [System Architecture](docs/source/user_guide/system_architecture.rst)
 - [Configuration](docs/source/user_guide/configuration.rst)
-- [Algorithms Overview](docs/source/algorithms/overview.rst)
 - [Build Your Own RL Project](docs/source/getting_started/build_your_own_rl.rst)
 - [Debug and Scale Up](docs/source/user_guide/debug_scaling_up.rst)
 - [Contributing Guide](docs/source/contribution/contributing_guide.rst)
