@@ -1,0 +1,52 @@
+type: RSLRLPolicy
+rollout_mode: sync
+weight_buffer:
+  type: CPUWeightBuffer
+  buffer_strategy: Shared
+  update_interval: 5.0
+  sample_size: 3
+  min_update_interval: 1.0
+  max_update_interval: 10.0
+
+policy_kwargs:
+  algorithm: PPO
+
+  # kwargs for third_party/rsl_rl/rsl_rl/algorithms/ppo.py::PPO
+  actor_noise_std: 1.0
+  clip_ratio: 0.2
+  entropy_coeff: 0.005
+  gae_lambda: 0.95
+  gradient_clip: 1.0
+  learning_rate: !!float 1e-3
+  schedule: adaptive
+  target_kl: 0.01
+  value_coeff: 1.0
+  actor_activations: ["elu", "elu", "elu", "linear"]
+  actor_hidden_dims: [512, 256, 128]
+  actor_init_gain: 1.
+  actor_input_normalization: True
+  actor_recurrent_layers: 1
+  actor_recurrent_module: LSTM
+  actor_recurrent_tf_context_length: 64
+  actor_recurrent_tf_head_count: 8
+  actor_shared_dims: null
+  batch_count: 4
+  batch_size: 1
+  critic_activations: ["elu", "elu", "elu", "linear"]
+  critic_hidden_dims: [512, 256, 128]
+  critic_init_gain: 1.
+  critic_input_normalization: True
+  critic_recurrent_layers: 1
+  critic_recurrent_module: LSTM
+  critic_recurrent_tf_context_length: 64
+  critic_recurrent_tf_head_count: 8
+  critic_shared_dims: null
+  polyak: 0.995
+  recurrent: False
+  return_steps: 1
+  _actor_input_size_delta: 0
+  _critic_input_size_delta: 0
+  action_max: !!float .inf
+  action_min: !!float -.inf
+  benchmark: False
+  gamma: 0.99

@@ -1,0 +1,112 @@
+[project]
+name = "rlightning"
+version = "0.1.0"
+description = "A Flexible Reinforcement Learning Framework that Unifies Prototyping and Scaling for Embodied Intelligence"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "codetiming",
+    "dm-tree>=0.1.8",
+    "gymnasium",
+    "hydra-core>=1.3.2",
+    "intervaltree",
+    "numpy",
+    "pybase64>=1.4.2",
+    "pyyaml>=6.0.2",
+    "ray[default]==2.46.0",
+    "rich",
+    "setuptools>=80.8.0,<81",
+    "swanboard>=0.1.7b1",
+    "swanlab[dashboard]>=0.6.0",
+    "tensorboard>=2.15.0",
+    "tensordict==0.8.3",
+    "torch==2.6.0",
+    "torchvision==0.21.0",
+    "tqdm>=4.67.1",
+    "transformers",
+    "uvloop",
+    "wandb",
+    "zmq",
+    "zstandard>=0.25.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "debugpy>=1.8.14",
+    "ipython",
+]
+isaaclab = [
+    "isaaclab[isaacsim]==2.2.0",
+]
+ale = [
+    "ale-py>=0.11.2",
+]
+maniskill = [
+    "sapien>=3.0.0b1",
+    "mani-skill==3.0.0b21",
+    "numpy==1.26.4",
+]
+mujoco = [
+    "gymnasium[mujoco]",
+]
+humanoid = [
+    "pyopengl",
+    "scipy",
+    "easydict",
+    "joblib",
+    "smplx @ git+https://github.com/ZhengyiLuo/smplx.git@master",
+    "smpl-sim @ git+https://github.com/ZhengyiLuo/SMPLSim.git@master",
+    "open3d==0.19.0",
+    "natsort==8.4.0",
+    "mink==0.0.13",
+]
+
+
+[tool.isort]
+profile = "black"
+known_first_party = ["rlightning"]
+
+[tool.pyright]
+include = ["rlightning"]
+pythonVersion = "3.11"
+typeCheckingMode = "off"
+reportMissingImports = false
+reportMissingModuleSource = false
+
+[tool.setuptools.packages.find]
+include = ["rlightning*"]
+
+[tool.uv]
+conflicts = [
+    [
+        { extra = "mujoco" },
+        { extra = "isaaclab" },
+    ],
+    [
+        { extra = "maniskill" },
+        { extra = "isaaclab" },
+    ],
+]
+override-dependencies = [
+    "sympy==1.13.1",
+    "torch==2.6.0",
+    "torchvision==0.21.0",
+]
+
+[[tool.uv.index]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple"
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+
+[[tool.uv.index]]
+name = "nvidia"
+url = "https://pypi.nvidia.com"
+
+[tool.uv.sources]
+isaaclab = { index = "nvidia" }
+
+[tool.uv.extra-build-dependencies]
+flatdict = ["setuptools<81"]

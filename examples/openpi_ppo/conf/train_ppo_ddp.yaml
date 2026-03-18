@@ -1,0 +1,14 @@
+defaults:
+  - buffer: rollout_buffer
+  - env: libero_x8
+  - train: train
+  - policy: openpi_ppo
+  - log: tensorboard
+  - cluster: 8t8e
+  - _self_
+
+engine: syncrl
+buffer:
+  capacity: 24576
+log:
+  name: ddp_exp

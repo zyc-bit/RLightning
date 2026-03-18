@@ -1,0 +1,7 @@
+type: "RolloutBuffer"
+capacity: 10240
+storage:
+  type: "unified"
+  device: "cpu"
+sampler:
+  type: "all"

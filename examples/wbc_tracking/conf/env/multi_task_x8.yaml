@@ -1,0 +1,69 @@
+- name: isaaclab_tracking_1
+  backend: isaac_manager_based
+  task: Tracking-Flat-G1-v0
+
+  # num of environments per work
+  num_envs: 4096
+
+  # num of workers
+  num_workers: 4
+
+  max_episode_steps: 100
+  num_cpus: 1
+  num_gpus: 1
+
+  env_kwargs:
+    env_spec: wbc_tracking.envs
+
+    robot:
+      robot_type: unitree_g1
+      robot_xml_path: examples/wbc_tracking/assets/unitree_description/mjcf/g1_mocap_29dof.xml
+      robot_base: pelvis
+      robot_rest_height: 0.79
+      viewer_cam_dist: 2.0
+
+    launcher: # configuration for isaac app launcher, headless must be set to True
+      headless: True
+
+    # given module path for importing
+    env_cfg:
+      module: examples.wbc_tracking.envs.flat_env_cfg::G1FlatEnvCfg
+      override:
+        commands:
+          motion:
+            motion_dir: .data/lafan1/retargeted/wbc_tracking
+
+- name: isaaclab_tracking_2
+  backend: isaac_manager_based
+  task: Tracking-Flat-G1-v0
+
+  # num of environments per work
+  num_envs: 4096
+
+  # num of workers
+  num_workers: 4
+
+  max_episode_steps: 100
+  num_cpus: 1
+  num_gpus: 1
+
+  env_kwargs:
+    env_spec: wbc_tracking.envs
+
+    robot:
+      robot_type: unitree_g1
+      robot_xml_path: examples/wbc_tracking/assets/unitree_description/mjcf/g1_mocap_29dof.xml
+      robot_base: pelvis
+      robot_rest_height: 0.79
+      viewer_cam_dist: 2.0
+
+    launcher: # configuration for isaac app launcher, headless must be set to True
+      headless: True
+
+    # given module path for importing
+    env_cfg:
+      module: examples.wbc_tracking.envs.flat_env_cfg::G1FlatEnvCfg
+      override:
+        commands:
+          motion:
+            motion_dir: .data/lafan1/retargeted/wbc_tracking

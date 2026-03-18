@@ -1,0 +1,17 @@
+train_worker_num: 4
+eval_worker_num: 4
+train_each_gpu_num: 1.0
+eval_each_gpu_num: 1.0
+buffer_worker_num: 1
+
+# Placement configuration for manual resource allocation
+placement:
+  mode: "manual"  # manual mode allows explicit resource pool definitions
+
+resource_pool:
+  - name: global_pool
+    num_node: 1
+    num_gpus: 8
+    env: "0-3"
+    eval: "0-3"
+    train: "4-7"

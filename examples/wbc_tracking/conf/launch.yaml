@@ -1,0 +1,18 @@
+defaults:
+  - env: single_task
+  - train: rsl_rl
+  - policy: rsl_rl_ppo
+  - buffer: rollout
+  - cluster: 1train_1eval
+  - _self_
+
+log:
+  level: INFO
+  backend: tensorboard
+  log_dir: "runs"
+  project: "rlightning"
+  name: wbc_tracking
+
+engine: rsl
+debug: True
+verbose: False

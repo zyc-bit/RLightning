@@ -1,0 +1,12 @@
+ray_address: auto
+
+train_worker_num: 1
+eval_worker_num: 1
+train_each_gpu_num: 1.
+eval_each_gpu_num: 1.0
+buffer_worker_num: 1
+
+remote_env: True
+remote_train: True
+remote_eval: True
+remote_storge: True

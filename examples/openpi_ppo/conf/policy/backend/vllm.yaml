@@ -1,0 +1,12 @@
+backend_name: vllm
+pretrain_path: "/data/ckpts/huggingface_internvl_2_5_2b/InternVL2_5-2B"
+enforce_eager: False
+tensor_parallel_size: 1
+seed: 42
+max_len: None
+prompt_max_len: 1024
+generate_max_len: 1024
+enable_prefix_caching: False
+full_determinism: False
+gpu_memory_utilization: 0.8
+enable_lora: False

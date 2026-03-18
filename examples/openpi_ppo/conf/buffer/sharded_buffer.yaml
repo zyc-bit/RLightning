@@ -1,0 +1,7 @@
+type: "RolloutBuffer"
+capacity: 40960
+storage:
+  type: "sharded"
+  device: "cpu"
+sampler:
+  type: "all"

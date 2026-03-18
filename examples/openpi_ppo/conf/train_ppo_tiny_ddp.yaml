@@ -1,0 +1,17 @@
+defaults:
+  - buffer: rollout_buffer
+  - env: libero_x8
+  - train: train_tiny
+  - policy: openpi_ppo
+  - log: wandb
+  - cluster: 8t8e
+  - _self_
+
+engine: syncrl
+policy:
+  optim_cfg:
+    lr: 1.0e-6
+buffer:
+  capacity: 12288
+log:
+  name: tiny_ddp_exp

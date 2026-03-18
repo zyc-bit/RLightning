@@ -1,0 +1,23 @@
+[project]
+name = "rlightning-wbc-tracking"
+version = "0.0.1"
+requires-python = ">=3.11"
+dependencies = [
+    "rlightning[dev, isaaclab, mujoco, humanoid]",
+    "rsl-rl"
+]
+
+[tool.uv]
+override-dependencies = [
+    "torch==2.6.0",
+    "torchvision==0.21.0",
+    "torchaudio==2.6.0",
+    "sympy==1.13.1"
+]
+
+[tool.uv.sources]
+rlightning = {path = "../../", editable = true}
+rsl-rl = {path = "../../third_party/rsl_rl", editable = true}
+
+[tool.uv.extra-build-dependencies]
+flatdict = ["setuptools<81"]

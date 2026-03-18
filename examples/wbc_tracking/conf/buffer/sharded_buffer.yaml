@@ -1,0 +1,14 @@
+type: RolloutBuffer
+capacity: 1000000
+auto_truncate_episode: false
+
+# rlightning.utils.config.config::StorageConfig
+storage:
+  type: sharded
+  unit: episode
+  device: cpu
+
+# rlightning.utils.config.config::SamplerConfig
+sampler:
+  # sequentially sample a batch of data
+  type: batch

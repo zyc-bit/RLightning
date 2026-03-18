@@ -1,0 +1,8 @@
+train_worker_num: 1
+eval_worker_num: 1
+
+# Placement configuration for auto resource allocation
+placement:
+    mode: "auto"
+    strategy: "disaggregate"
+    env_strategy: "default"

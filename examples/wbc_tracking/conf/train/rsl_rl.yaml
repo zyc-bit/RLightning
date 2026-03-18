@@ -1,0 +1,5 @@
+# rlightning.utils.config.TrainConfig
+max_epochs: 30000
+batch_size: 1024
+max_rollout_steps: 24
+# parallel: ddp

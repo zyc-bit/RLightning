@@ -1,0 +1,6 @@
+- name: global_pool
+  num_node: 1
+  num_gpus: 8
+  train: 0-1
+  eval: 2-3
+  env: 4-5

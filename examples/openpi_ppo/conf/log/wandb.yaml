@@ -1,0 +1,6 @@
+level: "INFO"
+backend: "wandb"
+mode: "offline"
+project: "openpi_ppo"
+log_dir: "runs"
+name: "default_exp"

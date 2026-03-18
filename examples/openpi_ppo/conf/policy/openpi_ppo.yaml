@@ -1,0 +1,86 @@
+defaults:
+  - backend: transformers
+type: "VLAPPOPolicy"
+device: "cuda"
+env_metadata: None
+rollout_mode: "sync"
+weight_buffer:
+  type: "WeightBuffer" # WeightBuffer, CPUWeightBuffer, ShardedWeightBuffer
+  buffer_strategy: "Double" # None, Double, Shared, Sharded
+
+model_cfg:
+  model_name: "openpi"
+  model_path: "/data/ckpts/RLinf/RLinf-Pi0-LIBERO-Spatial-Object-Goal-SFT" 
+  tokenizer_path: "/data/ckpts/RLinf/RLinf-Pi0-LIBERO-Spatial-Object-Goal-SFT"
+
+  precision: null
+  num_action_chunks: 5 # interface for the env
+  action_dim: 7
+
+  # LoRA settings
+  is_lora: False
+  lora_rank: 32
+
+  # Training settings
+  use_proprio: True
+  num_steps: 4 # denoise steps
+  add_value_head: True
+
+  # openpi specific parameters
+  openpi:
+    config_name: "pi0_libero"
+    num_images_in_input: 2
+    noise_level: 0.5
+    action_chunk: ${..num_action_chunks}
+    num_steps: ${..num_steps}
+    train_expert_only: True
+    action_env_dim: ${..action_dim}
+    noise_method: "flow_sde"
+    add_value_head: ${..add_value_head}
+    detach_critic_input: True
+
+optim_cfg:
+  # vla optimizer
+  type: "AdamW"
+  lr: 5.0e-6
+  value_lr: 1.0e-4
+  adam_beta1: 0.9
+  adam_beta2: 0.95
+  weight_decay: 0.01
+  adam_eps: 1.0e-08
+  grad_clip_norm: 10.0 # TODO: check if this is correct
+  critic_warmup_steps: 0
+
+ppo_cfg:
+  # ppo
+  adv_type: gae
+  loss_type: actor_critic
+  loss_agg_func: "token-mean"
+  entropy_bonus: 0
+  clip_ratio: 0.2
+  value_clip_ratio: 0.2
+  huber_delta: 10.0
+  
+  gamma: 0.99
+  gae_lambda: 0.95
+
+  reward_type: chunk_level
+  logprob_type: chunk_level
+  entropy_type: action_level
+
+# params for rollout
+sampling_params:
+  do_sample: True
+  temperature_train: 1.0
+  temperature_eval: 0.6
+  top_k: 50
+  top_p: 1.0
+  repetition_penalty: 1.0
+  add_BOS: False
+
+# length argument for autoregressive sampling
+# max length means max amount of tokens to generate
+length_params:
+  max_new_token: null
+  max_length: 1024
+  min_length: 1

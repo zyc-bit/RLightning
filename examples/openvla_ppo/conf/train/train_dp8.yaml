@@ -1,0 +1,10 @@
+max_epochs: 400
+max_rollout_steps: 160
+batch_size: 5120
+mini_batch_size: 640
+micro_batch_size: 40
+eval_interval: 5
+save_interval: 10
+save_dir: ${log.log_dir}/${log.project}/${log.name}/weights
+
+mode: "sync"

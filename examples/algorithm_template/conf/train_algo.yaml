@@ -1,0 +1,13 @@
+# the configuration model refers to: rlightning/utils/config/config.py
+defaults:
+  - buffer: buffer
+  - env: env
+  - train: train
+  - policy: policy
+  - log: log
+  - cluster: cluster
+  - _self_
+
+engine: syncrl
+debug: True
+verbose: True

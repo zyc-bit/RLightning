@@ -1,0 +1,47 @@
+- name: "libero_spatial_for_openpi-ppo"
+  task: "libero_spatial"
+  backend: "libero"
+  num_workers: 1
+  num_cpus: 1
+  num_gpus: 1
+
+  num_envs: 64
+  group_size: 1
+  max_episode_steps: 240
+  num_action_chunks: ${policy.model_cfg.num_action_chunks}
+  seed: 0
+  
+  auto_reset: False
+  ignore_terminations: False
+
+  use_rel_reward: True
+  reward_coef: 1.0
+
+  # RLinf LiberoEnv specific settings
+  reset_gripper_open: True
+  is_eval: False
+
+  use_fixed_reset_state_ids: True
+  use_ordered_reset_state_ids: False
+
+  # Indicate the reset state id (related to the task_id and trial_id) want to be specified. (e.g. 
+  # if set 0, the env always use the task 0 and trial 0 in the libero-spatial suite; 
+  # if set null, the initial states will be sampled from the whole libero-spatial suite. )
+  specific_reset_id: null # can be a number or null.
+
+  video_cfg:
+    save_video: False
+    info_on_video: True
+    video_base_dir: ${log.log_dir}/${log.project}/${log.name}/video/train
+
+  init_params:
+    camera_heights: 256
+    camera_widths: 256
+  
+  evaluate_cfg:
+    auto_reset: False # TODO: set to True auto reset is supported
+    ignore_terminations: True
+    is_eval: True
+    video_cfg:
+      save_video: True
+      video_base_dir: ${log.log_dir}/${log.project}/${log.name}/video/eval

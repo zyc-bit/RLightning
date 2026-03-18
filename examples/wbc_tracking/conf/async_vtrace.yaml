@@ -1,0 +1,46 @@
+defaults:
+  - env: single_task
+  - train: rsl_rl
+  - policy: rsl_rl_ppo
+  - buffer: rollout
+  - _self_
+
+log:
+  level: INFO
+  backend: tensorboard
+  log_dir: "runs"
+  project: "rlightning"
+  name: wbc_tracking
+
+cluster:
+  ray_address: auto
+
+  train_worker_num: 2
+  eval_worker_num: 2
+  train_each_gpu_num: 1.0
+  eval_each_gpu_num: 1.0
+  buffer_worker_num: 1
+
+  remote_env: True
+  remote_train: True
+  remote_eval: True
+  remote_storage: True
+
+env:
+  num_envs: 4096
+  num_workers: ${cluster.eval_worker_num}
+
+train:
+  parallel: ddp
+
+# Replace the default PPO algorithm with PPOVtrace.
+policy:
+
+  policy_kwargs:
+    algorithm: PPOVtrace
+    rho_bar: 1.
+    c_bar: 1.
+
+engine: async_rsl
+debug: True
+verbose: False

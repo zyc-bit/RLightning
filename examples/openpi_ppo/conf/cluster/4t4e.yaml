@@ -1,0 +1,8 @@
+train_worker_num: 4
+eval_worker_num: 4
+
+# Placement configuration for auto resource allocation
+placement:
+    mode: "auto"
+    strategy: "disaggregate"
+    env_strategy: "device-colocate"

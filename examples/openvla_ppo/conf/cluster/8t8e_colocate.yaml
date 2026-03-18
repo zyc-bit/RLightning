@@ -1,0 +1,9 @@
+train_worker_num: 8
+eval_worker_num: 8
+
+# Placement configuration for auto resource allocation
+placement:
+    mode: "auto"
+    strategy: "colocate"
+    env_strategy: "device-colocate"
+enable_offload: True

@@ -1,0 +1,3 @@
+[submodule "third_party/rsl_rl"]
+	path = third_party/rsl_rl
+	url = https://github.com/KornbergFresnel/rsl_rl.git

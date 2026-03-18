@@ -1,0 +1,13 @@
+defaults:
+  - buffer: rollout_buffer
+  - env: maniskill
+  - train: train
+  - policy: openvla_ppo
+  - log: wandb
+  - cluster: 1t1e
+  - _self_
+
+imports:
+  - examples.openvla_ppo.maniskill
+
+engine: syncrl

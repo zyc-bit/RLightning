@@ -1,0 +1,6 @@
+level: "INFO"
+backend: "wandb"
+project: "openvla_ppo"
+mode: "offline"
+log_dir: "runs"
+name: "default_exp"

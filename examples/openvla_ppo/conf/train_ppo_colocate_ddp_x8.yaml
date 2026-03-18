@@ -1,0 +1,16 @@
+defaults:
+  - buffer: sharded_buffer
+  - env: maniskill_x8
+  - train: train_dp8
+  - policy: openvla_ppo
+  - log: wandb
+  - cluster: 8t8e_colocate
+  - _self_
+
+imports:
+  - examples.openvla_ppo.maniskill
+
+engine: syncrl
+
+log:
+  name: colocate_ddp

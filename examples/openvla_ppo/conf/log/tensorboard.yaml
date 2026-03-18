@@ -1,0 +1,5 @@
+level: "INFO"
+backend: tensorboard
+log_dir: "runs"
+project: "openvla_ppo"
+name: "default_exp"

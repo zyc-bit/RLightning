@@ -1,0 +1,78 @@
+/* Widen the content area a bit for better readability on large screens */
+:root {
+  --content-max-width: 2000px;
+}
+
+/* Shibuya layout containers */
+.sy-container {
+  max-width: var(--content-max-width);
+}
+
+/* Main article wrapper in Shibuya */
+.sy-main .max-w-6xl {
+  max-width: var(--content-max-width);
+}
+
+/* Fallbacks for other containers */
+main,
+.main,
+.content,
+.doc,
+.document,
+.bd-content,
+#content {
+  max-width: var(--content-max-width);
+}
+
+/* Keep sidebars from being too narrow on wide screens */
+.sidebar,
+.sidebar-left,
+.sidebar-right {
+  max-width: 320px;
+}
+
+/* Prevent long API module names from overflowing the left navigation */
+.globaltoc li {
+  min-width: 0;
+}
+
+.globaltoc a {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Resize selected Mermaid diagrams without raw HTML wrappers */
+.mermaid-width-50 pre.mermaid,
+.mermaid-width-50 .mermaid-container > pre {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.mermaid-width-50 pre.mermaid > svg,
+.mermaid-width-50 .mermaid-container > pre > svg {
+  width: 100%;
+  height: auto;
+  max-width: 100% !important;
+  display: block;
+}
+
+.mermaid-width-80 pre.mermaid,
+.mermaid-width-80 .mermaid-container > pre {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.mermaid-width-80 pre.mermaid > svg,
+.mermaid-width-80 .mermaid-container > pre > svg {
+  width: 100%;
+  height: auto;
+  max-width: 100% !important;
+  display: block;
+}
+
+/* Remove excessive vertical whitespace from selected Mermaid diagrams */
+.mermaid-height-auto pre.mermaid > svg,
+.mermaid-height-auto .mermaid-container > pre > svg {
+  height: auto !important;
+}

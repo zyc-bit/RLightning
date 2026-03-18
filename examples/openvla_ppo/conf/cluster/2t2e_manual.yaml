@@ -1,0 +1,9 @@
+defaults:
+  - resource_pool: global_pool
+
+train_worker_num: 2
+eval_worker_num: 2
+
+# Placement configuration for manual resource allocation
+placement:
+  mode: "manual"  # manual mode allows explicit resource pool definitions

@@ -1,0 +1,31 @@
+ray_address: auto
+
+train_worker_num: 8
+eval_worker_num: 8
+train_each_gpu_num: 1.0
+eval_each_gpu_num: 1.0
+buffer_worker_num: "auto"
+
+remote_env: True
+remote_train: True
+remote_eval: True
+remote_storage: True
+
+placement:
+  mode: "manual"
+
+resource_pool:
+  - name: global_pool
+    num_node: 4
+    num_gpus: 8
+    # env: "0-3,8-11"
+    # eval: "4-7,12-15"
+    # train: "16-23"
+    env: "0-1, 8-9, 16-17, 24-25"
+    eval: "2-3, 10-11, 18-19, 26-27"
+    train: "4-5, 12-13, 20-21, 28-29"
+
+# placement:
+#   mode: "auto"
+#   strategy: "disaggregate"
+#   env_strategy: "default"

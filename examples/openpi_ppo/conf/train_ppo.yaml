@@ -1,0 +1,12 @@
+defaults:
+  - buffer: rollout_buffer
+  - env: libero
+  - train: train
+  - policy: openpi_ppo
+  - log: wandb
+  - cluster: 1t1e
+  - _self_
+
+engine: syncrl
+buffer:
+  capacity: 24576
