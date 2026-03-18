@@ -10,9 +10,9 @@ complex and diverse embodied research.
    :align: center
    :width: 500
 
-Official documentation: `https://rlightning.readthedocs.io/en/latest/`_
+Official documentation: `https://rlightning.readthedocs.io/en/latest/ <https://rlightning.readthedocs.io/en/latest/>`_
 
-Source repository: `https://github.com/DeepLink-org/RLightning`_
+Source repository: `https://github.com/DeepLink-org/RLightning <https://github.com/DeepLink-org/RLightning>`_
 
 
 .. toctree::
